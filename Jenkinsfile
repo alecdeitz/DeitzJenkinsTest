@@ -12,9 +12,19 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Deploy to Dev') {
             steps {
-                echo 'Deploying....'
+                echo 'Deploying Dev....'
+            }
+        }
+		stage('Initiate Deploy to QA') {
+			steps {
+                input "Good to deploy to QA?"
+            }
+		}
+		stage('Deploy to QA') {
+            steps {
+                echo 'Deploying QA....'
             }
         }
     }
